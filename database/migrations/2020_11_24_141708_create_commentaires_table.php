@@ -15,8 +15,8 @@ class CreateCommentairesTable extends Migration
     {
         Schema::create('commentaires', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('commentaire_id');
-            $table->foreign('commentaire_id')->references('id')->on('messages');
+            $table->integer('message_id');
+            $table->foreign('message_id')->references('id')->on('messages');
             $table->string('content');
             $table->string('image');
             $table->integer('user_id');

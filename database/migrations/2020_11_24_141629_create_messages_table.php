@@ -18,10 +18,11 @@ class CreateMessagesTable extends Migration
             $table->string('content');
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('image');
-            $table->string('tags');
-            $table->date('deleted_at');
+            $table->string('image')->nullable();
+            $table->string('tags')->nullable();
+            $table->date('deleted_at')->nullable();
             $table->timestamps();
+
         });
     }
 

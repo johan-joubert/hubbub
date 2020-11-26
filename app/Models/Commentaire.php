@@ -15,6 +15,9 @@ public function user()
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 
-
+public function message()
+    {
+        return $this->belongsTo('App\Models\Message', 'commentaire_id');
+    }
 
 }

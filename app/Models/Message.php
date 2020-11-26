@@ -14,4 +14,10 @@ class Message extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
+
+    public function commentaires()
+    {
+        return $this->hasMany('App\Models\Commentaire');
+    }
+
 }

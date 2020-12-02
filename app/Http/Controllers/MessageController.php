@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersMessages;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Commentaire;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -90,17 +91,16 @@ class MessageController extends Controller
 
     public function show(Message $message)
     {
-
         return view('zoomHubb', ['message' => $message]);
     }
 
-    public function zoomHubb()
-    {
-        $messageId = auth()->user();
-        $message = Message::findOrFail($messageId);
+    // public function zoomHubb()
+    // {
+    //     $messageId = auth()->user();
+    //     $message = Message::findOrFail($messageId);
 
-        return view('zoomHubb', ['message' => $message]);
-    }
+    //     return view('zoomHubb', ['message' => $message]);
+    // }
 
 
     /**
@@ -153,5 +153,17 @@ class MessageController extends Controller
         } else {
             return redirect()->route('home');
         }
+    }
+
+    public function search(Request $request) {
+        $q = $request->input('q');
+        $messages = DB::table('messages')
+            ->where('messages.tags', 'like', "%$q%")
+            ->orWhere('messages.content', 'like', "%$q%")
+            ->join('users', 'messages.user_id', '=', 'users.id')
+            // ->join('commentaires', 'messages.id', '=', 'commentaires.message_id')
+            ->get();
+        
+        return view('searchPage', ['messages' => $messages]);
     }
 }

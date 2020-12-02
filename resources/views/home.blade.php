@@ -46,7 +46,6 @@
                     <strong>{{ $message->user->pseudo}}</strong> -
                     {{$message->created_at}} - Modifier le {{$message->updated_at}}
                     <br>
-                    {{ $message->pseudo}}
                     {{ $message->image}}
                     {{ $message->content }}
                 </div>

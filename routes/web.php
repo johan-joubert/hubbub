@@ -53,6 +53,11 @@ Route::put('user/editPassword', [App\Http\Controllers\UserController::class, 'up
 
 
 
+//recherche 
+Route::get('/search', [App\Http\Controllers\MessageController::class, 'search'])->name('message.search');
+
+
+
 
 
 

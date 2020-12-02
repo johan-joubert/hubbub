@@ -4,7 +4,8 @@
 <div class="container sectionIndex">
     <div class="row">
         <div class="col-md-6">
-            <h1 class="text-center mainTitle">hubbub</h1>
+            <h1 class="text-left mainTitle">hubbub</h1>
+            <h2>Avec Hubbub, faites vos proposition pour refaire le monde</h2>
         </div>
         <div class="col-md-6">
             <div class="card">

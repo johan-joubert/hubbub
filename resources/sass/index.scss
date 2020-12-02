@@ -1,3 +1,8 @@
+.sectionIndex {
+    margin-top: 200px;
+}
+
+
 a {
     display: block !important;
     margin: auto !important;
@@ -10,9 +15,6 @@ a {
     color: #2a558f;
 }
 
-.sectionIndex {
-    margin-top: 200px;
-}
 
 .inputConnect {
     display: inline-block !important;
@@ -26,4 +28,32 @@ a {
     margin: auto !important;
     width: 100%;
     background-color: #2a558f;
+}
+
+.btn-createUser {
+    background-color: #C26225;
+    font-size: 1.2em;
+    border: none;
+    transition: 0.5s;
+}
+
+.btn-createUser:hover {
+    background-color: #a04f1d;
+    transition: 0.5s;
+    width: 80%;
+}
+
+@media screen and(max-width: 992px) {
+    .sectionIndex {
+        margin-top: 20px;
+    }
+
+    .mainTitle {
+        font-family: 'Plaster', cursive;
+        font-size: 4em;
+        color: #2a558f;
+        margin-bottom: 100px;
+    }
+    
+    
 }

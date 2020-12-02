@@ -16,16 +16,47 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// page de connexion
+Route::get('/', 'HomeController@index')->name('index'); 
+
+Route::get('/home', 'HomeController@home')->name('home');
+
 
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/message', 'MessageController');
 
-Route::get('/home', 'HomeController@home')->name('home');
+Route::resource('/commentaire', 'CommentsController');
+
+
+// Route::get('/zoomHubb', [App\Http\Controllers\MessageController::class, 'zoomHubb'])->name('message.zoom');
+
+
+
+// Route::get account
+
+Route::get('user/account', [App\Http\Controllers\UserController::class, 'showAccount'])->name('user.account');
+
+// afficher formulaire modif
+Route::get('user/update', [App\Http\Controllers\UserController::class, 'showUpdatePage'])->name('user.update');
+
+// valider les modifs
+Route::put('user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+
+// afficher formulaire modification mot de passe
+Route::get('user/editPassword', [App\Http\Controllers\UserController::class, 'showUpdatePagePassword'])->name('user.updatePassword');
+
+// valider les modifs mot de passe
+Route::put('user/editPassword', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('user.updatePassword');
+
+
+
+
+
+
+
+
+
 

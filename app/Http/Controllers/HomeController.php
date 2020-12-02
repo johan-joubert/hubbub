@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Message;
+use App\Models\User;
 
 
 
@@ -17,8 +18,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-    }
+        $this->middleware('auth')->only(['home']);
+        $this->middleware('guest')->only(['index']);    }
 
     /**
      * Show the application dashboard.
@@ -27,38 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('index');
     }
 
-
-
-    /**
-    * @param  array  $data
-    * @return \Illuminate\Contracts\Validation\Validator
-    */
-   protected function validator(array $data)
-   {
-       return Validator::make($data, [
-           'content' => ['required', 'string', 'max:255'],
-       ]);
-   }
-
-   /**
-    * Create a new user instance after a valid registration.
-    *
-    * @param  array  $data
-    * @return \App\Models\Message
-    */
-   protected function create(array $data)
-   {
-   }
-
-   public function store(Request $request)
-   {
-
-
-
-   }
 
    public function home()
    {

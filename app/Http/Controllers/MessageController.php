@@ -9,6 +9,10 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersMessages;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Commentaire;
+
+
+
 
 
 
@@ -16,8 +20,13 @@ use Illuminate\Support\Facades\Validator;
 class MessageController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['search', 'show']);
+    }
 
-        /**
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -75,19 +84,24 @@ class MessageController extends Controller
         $message->save();
 
         return redirect()->route('home');
-    
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+
+    public function show(Message $message)
     {
-        //
+
+        return view('zoomHubb', ['message' => $message]);
     }
+
+    public function zoomHubb()
+    {
+        $messageId = auth()->user();
+        $message = Message::findOrFail($messageId);
+
+        return view('zoomHubb', ['message' => $message]);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -95,9 +109,10 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Message $message)
     {
-        //
+
+        return view('messageEdit', ['message' => $message]);
     }
 
     /**
@@ -107,9 +122,15 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Message $message)
     {
-        //
+
+        $message->content = $request->input('content');
+        $message->tags = $request->input('tags');
+        $message->image = $request->input('image');
+        $message->save();
+
+        return redirect()->route('home');
     }
 
     /**
@@ -118,8 +139,19 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Message $message)
     {
-        //
+
+
+        if ($message->user_id == auth()->id()) {
+
+            $message->delete();
+
+            Commentaire::where('message_id', $message->id)->delete();
+
+            return redirect()->route('home');
+        } else {
+            return redirect()->route('home');
+        }
     }
 }

@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Commentaire');
     }
+
+    public function isAdmin() {
+        return $this->roles_id === 2;
+    }
+
 }

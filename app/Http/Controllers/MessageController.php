@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\DB;
 
 
 
+
 class MessageController extends Controller
 {
 
@@ -70,6 +71,8 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(Gate::allow('update-messages'));
+
 
         $request->validate([
             'content' => 'required|min:5',
@@ -91,6 +94,7 @@ class MessageController extends Controller
 
     public function show(Message $message)
     {
+        
         return view('zoomHubb', ['message' => $message]);
     }
 
@@ -112,6 +116,7 @@ class MessageController extends Controller
     public function edit(Message $message)
     {
 
+        // $this->authorize('update', $message);
         return view('messageEdit', ['message' => $message]);
     }
 
@@ -161,7 +166,8 @@ class MessageController extends Controller
             ->where('messages.tags', 'like', "%$q%")
             ->orWhere('messages.content', 'like', "%$q%")
             ->join('users', 'messages.user_id', '=', 'users.id')
-            // ->join('commentaires', 'messages.id', '=', 'commentaires.message_id')
+            // ->leftJoin('commentaires', 'commentaires.message_id', '=', 'messages.id')
+            ->select('messages.*', 'messages.content as postMessage','users.pseudo as pseudo')
             ->get();
         
         return view('searchPage', ['messages' => $messages]);

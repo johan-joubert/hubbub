@@ -88,7 +88,7 @@
 
         <main class="py-4">
             @if (request()->input('q'))
-            <h6>{{ $messages->count($message) }} résultat(s) pour la recherche "{{ request()->q }}</h6>
+            <h6>{{ count($messages) }} résultat(s) pour la recherche "{{ request()->q }}</h6>
             @endif
 
 

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Message;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
+
 
 
 
@@ -34,6 +36,7 @@ class HomeController extends Controller
 
    public function home()
    {
+
        $messages = Message::with('commentaires')->latest()->get();
        return view('home', ['messages' => $messages]);
    }

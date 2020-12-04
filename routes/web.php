@@ -39,6 +39,8 @@ Route::resource('/commentaire', 'CommentsController');
 
 Route::get('user/account', [App\Http\Controllers\UserController::class, 'showAccount'])->name('user.account');
 
+Route::get('user/showHubb', [App\Http\Controllers\MessageController::class, 'showHubb'])->name('user.showHubb');
+
 // afficher formulaire modif
 Route::get('user/update', [App\Http\Controllers\UserController::class, 'showUpdatePage'])->name('user.update');
 
@@ -55,6 +57,8 @@ Route::put('user/editPassword', [App\Http\Controllers\UserController::class, 'up
 
 //recherche 
 Route::get('/search', [App\Http\Controllers\MessageController::class, 'search'])->name('message.search');
+
+
 
 
 

@@ -29,7 +29,8 @@ class CommentsController extends Controller
         Commentaire::create([
             'user_id' => auth()->user()->id,
             'message_id' => $request->input('messageId'),
-            'content' => $request->input('content')
+            'content' => $request->input('content'),
+            'image' => $request->input('imageComments'),
 
         ]);
 
@@ -43,7 +44,6 @@ class CommentsController extends Controller
         $message = Message::findOrFail($messageId);
 
 
-        if($commentaire->user_id == auth()->user()->id || $message->user_id === auth()->user()->id) {
 
             $commentaire->delete();
 
@@ -51,9 +51,6 @@ class CommentsController extends Controller
             return redirect()->route('home');
 
 
-        } else {
-            return redirect()->route('home');
-        }
     }
 
     public function edit(Commentaire $commentaire)

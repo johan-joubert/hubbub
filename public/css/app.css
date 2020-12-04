@@ -10903,8 +10903,107 @@ a.text-dark:focus {
   }
 }
 
+.namePseudo {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.linkProfil,
+.linkLogout {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
 input {
   text-align: center;
+}
+
+.linkProfil {
+  display: block;
+  text-align: center;
+}
+
+.areaHubb {
+  display: inline-block !important;
+  width: 100% !important;
+  height: 80px;
+  background-color: #fff;
+  border: 1px solid #dfdfdf;
+  border-radius: 5px;
+}
+
+.inputTags,
+.inputImage {
+  border: none;
+}
+
+.blocNewHubb {
+  margin-bottom: 50px;
+}
+
+.btnEdit {
+  border: none;
+  background-color: transparent;
+  color: #2a558f;
+}
+
+#pseudoHubb {
+  font-size: 2em;
+}
+
+.blocPseudoDate {
+  font-size: 0.9em;
+}
+
+.iconProfil {
+  text-decoration: none !important;
+  color: #000 !important;
+}
+
+i {
+  color: #2a558f !important;
+}
+
+.btnSearch {
+  color: #2a558f !important;
+}
+
+.btnHubb {
+  background-color: #2a558f !important;
+  color: #fff;
+  margin: auto !important;
+}
+
+.btnComment {
+  background-color: #2a558f !important;
+  color: #fff;
+}
+
+.btnThreePoints {
+  font-size: 2em;
+}
+
+.blocHubb {
+  padding: 5px;
+}
+
+.app {
+  display: none;
+}
+
+@media screen and (max-width: 992px) {
+  .titleApp {
+    text-align: center !important;
+  }
+
+  * {
+    text-align: center !important;
+    margin: auto !important;
+  }
 }
 
 .sectionIndex {
@@ -10961,6 +11060,19 @@ a {
     color: #2a558f;
     margin-bottom: 100px;
   }
+}
+
+.btnEditInfo {
+  background-color: #9daec4 !important;
+  color: #2a558f !important;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.btnSearch {
+  color: #2a558f !important;
 }
 
 .titleApp {

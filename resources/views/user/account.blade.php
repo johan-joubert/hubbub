@@ -1,42 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-8 offset-2">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Prenom</th>
-                        <th>Nom</th>
-                        <th>Pseudo</th>
-                        <th>Email</th>
-                        <th>Crée le</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                            <tr>
-                                <td>{{$user['prenom']}}</td>
-                                <td>{{$user['nom']}}</td>
-                                <td>{{$user['pseudo']}}</td>
-                                <td>{{$user['email']}}</td>
-                                <td>{{$user['created_at']}}</td>
-                                <td>
-                                   <a class="btn btn-warning" href="{{ route('user.update') }}">Modifier</a>
-                                </td>
-                                <td>
-                                   <a class="btn btn-warning" href="{{ route('user.updatePassword') }}">Modifier mot de passe</a>
-                                </td>
-                            </tr>
-                    </tbody>
-
-                </table>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-center">{{$user['prenom']}}</li>
+                    <li class="list-group-item text-center">{{$user['nom']}}</li>
+                    <li class="list-group-item text-center">{{$user['pseudo']}}</li>
+                    <li class="list-group-item text-center">{{$user['email']}}</li>
+                    <li class="list-group-item text-center">{{$user['created_at']}}</li>
+                    <li class="list-group-ite text-center mb-2"><a class="btn btnEditInfo" href="{{ route('user.update') }}">Modifier mes informations</a></li>
+                    <li class="list-group-ite text-center mb-2"><a class="btn btnEditInfo" href="{{ route('user.updatePassword') }}">Modifier mot de passe</a></li>
+                    <li class="list-group-ite text-center"><a href="{{ route('user.showHubb') }}"class="btn btnEditInfo">Historique des Hubes</a></li>
+                </ul>
             </div>
         </div>
-        <div class="col-md-6">
-            <a href="#">historique des Hubes</a>
-        </div>
     </div>
+</div>
+
+
 @endsection

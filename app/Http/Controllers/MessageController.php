@@ -57,9 +57,17 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showHubb(User $user)
     {
-        //
+        $userId = auth()->user()->id;
+        $user = User::findOrFail($userId);
+
+        // $messages = DB::table('messages')
+        // ->where('user_id', '=', $userId)
+        // ->get();
+    
+    return view('user/showHubb', ['user' => $user]);
+
     }
 
 
@@ -147,19 +155,14 @@ class MessageController extends Controller
     public function destroy(Message $message)
     {
 
-
-        if ($message->user_id == auth()->id()) {
-
             $message->delete();
 
             Commentaire::where('message_id', $message->id)->delete();
 
             return redirect()->route('home');
-        } else {
-            return redirect()->route('home');
-        }
     }
 
+    
     public function search(Request $request) {
         $q = $request->input('q');
         $messages = DB::table('messages')
